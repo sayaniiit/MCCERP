@@ -1,0 +1,43 @@
+// C program for shell sort
+#include <stdio.h>
+void shellsort(int v[], int n)
+{
+	int gap, i, j, temp;
+	for(gap = n/2; gap > 0; gap /=2)
+	{
+		printf("gap=%d\n",gap);
+		for(i = gap; i < n; i++)
+		{
+			for(j = i - gap; j >=0 && v[j]>v[j+gap]; j-=gap)
+			{
+				temp = v[j];
+				v[j] = v[j+gap];
+				v[j+gap] = temp;
+			}
+		}
+	}
+}
+int main()
+{
+	int data[10];
+    int n,i; 
+    printf("Enter the value of n \n");
+    scanf("%d", &n);
+    printf("Enter the elements one by one \n");
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &data[i]);
+    }
+	for(i = 0; i < n; i++) 
+	{
+	 printf("%d\n", data[i]);
+	}
+	 printf("--------\n"); 
+	shellsort(data, n);
+	for(i = 0; i < n; i++) 
+	{ 
+	printf("%d\n", data[i]); 
+	}
+	printf("--------");
+	return 0;
+}

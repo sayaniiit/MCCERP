@@ -1,0 +1,51 @@
+/*specific word count*/
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+void gotoNextWord();
+char str[200], w[20];
+int slen, wlen, wcount, i, j;
+int main()
+{
+	printf("Enter string: ");
+	gets(str);
+	printf("Enter word: ");
+	gets(w);	
+	slen = strlen(str);
+	wlen = strlen(w);
+	i = j = wcount = 0;
+	while(i < slen)
+	{
+		if(str[i] == w[0])
+		{
+			for(j = 0; j < wlen; j++)
+			{
+				if(str[i+j] != w[j])
+				{
+					gotoNextWord();
+					break;
+				}
+			}
+			if(j == wlen)
+			{
+				if(isspace(str[i+j]) && ispunct(str[i+j])||str[i+j]=='\0')//error
+				{
+					wcount++;
+					i += j;
+				}
+			}
+		}
+		else
+		{
+			gotoNextWord();
+		}
+		i++;
+	}
+	printf("Word count: %d\n",wcount);
+	return 0;
+}
+void gotoNextWord()
+{
+	while(isspace(str[i]) == 0 && ispunct(str[i]) == 0 && str[i] != '\0')
+		i++;
+}

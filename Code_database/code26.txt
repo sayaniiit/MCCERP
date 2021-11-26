@@ -1,0 +1,41 @@
+//Printing Pattern using Recursion in c program
+#include <stdio.h>
+#include <stdlib.h>
+#include<conio.h>
+void printInvertedri8Triangle(int n)
+{
+		 if (n==1)
+		 {
+		     printf("* \n");
+		 }
+		 else if(n>1)
+		 {   int i;
+		     for (i=0;i<n;i++)
+				     printf("*");
+				     printf("\n");
+		     printInvertedri8Triangle(n-1);
+		 }
+}
+void printrightTriangle(int n)   
+{
+		    if (n==1)
+				 {
+				 printf("*");                    
+				 printf("\n");
+				 }
+ 			else if(n>1)
+				 {
+				
+				     int i;
+				     printrightTriangle(n-1);
+				     for (i=0;i<n;i++)
+						     printf("*");
+						     printf("\n");
+				 }
+}                                       
+void main(void)
+{
+printrightTriangle(10);
+printInvertedri8Triangle(10);          
+getch();
+}

@@ -1,0 +1,56 @@
+//Recursive C Insertion Sort
+#include<stdio.h>
+#define ARR_SIZE 6
+void print_r(int *arr, size_t n);
+void insertion_sort(int *arr, size_t n, size_t i);
+int main()
+{
+    int nums[ARR_SIZE],i;
+	printf("Enter the elements one by one \n");
+    for (i = 0; i < ARR_SIZE; i++)
+    {
+        scanf("%d", &nums[i]);
+    }
+	for(i = 0; i < ARR_SIZE; i++) 
+	{
+	 printf("%d\n", nums[i]);
+	}
+    print_r(nums, ARR_SIZE);
+    printf("Sorting...\n");
+    insertion_sort(nums, ARR_SIZE, 0);
+    print_r(nums, ARR_SIZE);
+    return 0;
+}
+void print_r(int *arr, size_t n)
+{
+    int i;
+    printf("Array\n(\n");
+    for(i=0; i<n; i++)
+	{
+        printf("\t[%d] => %d\n", i, arr[i]);
+    }
+    printf(")\n");
+}
+void insertion_sort(int *arr, size_t n, size_t i)
+{
+    int el,j;    
+    if(i == n-1)
+	{
+        // Nothing to do since we're looking at the last element.
+    }
+    else
+	{
+        insertion_sort(arr, n, i+1);
+        el = arr[i];
+         // All elements to the right of index i are assumed to be sorted.
+        for(j = i+1; j<n; j++)
+		{
+            if(el > arr[j])
+			{
+                // el is bigger, swap el moves to the right in the array.
+                arr[j-1] = arr[j];
+                arr[j] = el;
+            }
+        }
+    }
+}
